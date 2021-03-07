@@ -15,22 +15,40 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', fetchOneMovie); // this is listening for it's 'phoneNumber' to be called
+    yield takeEvery('FETCH_GENRES', fetchOneGenre);
+
 }
 
 
 function* fetchOneMovie(action) {  // We are receiving a payload from MovieListFile.
   try {
-  const movies = yield axios.get(`/api/movie/${action.payload}`); // this action.payload is the id 
+  const movie = yield axios.get(`/api/movie/${action.payload}`); // this action.payload is the id 
         // console.log('get one movie:', action.payload );
-        console.log('movies log in saga', movies);
+        console.log('movies log in saga', movie);
        
-       yield put({ type: 'SET_ONE_MOVIE', payload: movies.data }); // this is sending the id to the next place.
+       yield put({ type: 'SET_ONE_MOVIE', payload: movie.data }); // this is sending the id to the next place.
       //  yield put({ type: 'SET_ONE_MOVIE', payload: movies.movieID.data }); // this is sending the id to the next place.
 
       } catch {
           console.log('get all error');
       }
 }
+
+
+function* fetchOneGenre(action) {  // We are receiving a payload from MovieListFile.
+  try {
+  const genres = yield axios.get(`/api/genre/${action.payload}`); // this action.payload is the id 
+        // console.log('get one movie:', action.payload );
+        console.log('movies log in saga', genres);
+       
+       yield put({ type: 'SET_ONE_GENRE', payload: genres.data }); // this is sending the id to the next place.
+      //  yield put({ type: 'SET_ONE_MOVIE', payload: movies.movieID.data }); // this is sending the id to the next place.
+
+      } catch {
+          console.log('get all error');
+      }
+}
+
 
 
 
@@ -61,6 +79,17 @@ const SendOneMovie = (state = [], action) => {
 }; // end SendOneMovie
 
 
+const sendOneGenre = (state = [], action) => {
+  if (action.type === 'SET_ONE_GENRE') {
+    return action.payload;
+  }
+  return state;
+}; // end sendOneGenre
+
+
+
+
+
 // Used to store movies returned from the server
 const movies = (state = [], action) => {
     switch (action.type) {
@@ -71,6 +100,7 @@ const movies = (state = [], action) => {
     }
 }
 
+// 
 // Used to store the movie genres
 const genres = (state = [], action) => {
     switch (action.type) {
@@ -87,6 +117,7 @@ const storeInstance = createStore(
         movies,
         genres,
         SendOneMovie,
+        sendOneGenre,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),

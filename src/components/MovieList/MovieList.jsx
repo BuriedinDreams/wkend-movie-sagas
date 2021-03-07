@@ -10,7 +10,10 @@ function MovieList() {
   const history = useHistory(); // this is used get to the next page
 
     const dispatch = useDispatch();
+
     const movies = useSelector(store => store.movies);
+
+   
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
@@ -23,6 +26,8 @@ function MovieList() {
         type: 'FETCH_ONE_MOVIE',
         payload: movieID  // this is sending the movie_id to the index file.
       })
+
+
 
       // console.log("im clicked");
       history.push('/details') // this is taking the user to the next page once the button is clicked.
