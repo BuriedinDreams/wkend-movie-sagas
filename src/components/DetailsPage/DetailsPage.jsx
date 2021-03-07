@@ -17,7 +17,7 @@ function DetailsPage() {
     <div>
       <h1>Details Page</h1>
 
-     {/* <p> {retrievedDetails[0].id} </p> */}
+    
        
 
 

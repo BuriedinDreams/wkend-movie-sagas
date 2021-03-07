@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
-
+// This is for grabbing one movie 
 router.get('/:id', (req, res) => {
 
   console.log('req.params.id', req.params.id );
@@ -20,11 +20,6 @@ router.get('/:id', (req, res) => {
   })
 
 })
-
-
-
-
-
 
 
 router.get('/', (req, res) => {
