@@ -5,6 +5,7 @@ const pool = require('../modules/pool')
 
 router.get('/:id', (req, res) => {
 
+  console.log('req.params.id', req.params.id );
   const query = `SELECT * from "movies" 
   WHERE id = $1 ;`  
   const movieID = req.params.id

@@ -14,16 +14,18 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
-    yield takeEvery('FETCH_ONE_MOVIE', fetchOneMovie);
+    yield takeEvery('FETCH_ONE_MOVIE', fetchOneMovie); // this is listening for it's 'phoneNumber' to be called
 }
 
 
-function* fetchOneMovie(action) {  // We are receiving a payload from the front end
+function* fetchOneMovie(action) {  // We are receiving a payload from MovieListFile.
   try {
   const movies = yield axios.get(`/api/movie/${action.payload}`); // this action.payload is the id 
-        console.log('get one movie:', action.payload );
+        // console.log('get one movie:', action.payload );
+        console.log('movies log in saga', movies);
        
-        yield put({ type: 'SET_ONE_MOVIE', payload: movies.data });
+       yield put({ type: 'SET_ONE_MOVIE', payload: movies.data }); // this is sending the id to the next place.
+      //  yield put({ type: 'SET_ONE_MOVIE', payload: movies.movieID.data }); // this is sending the id to the next place.
 
       } catch {
           console.log('get all error');
@@ -50,7 +52,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 
 
-// Used to store one movie and send to DetailsPage
+// Used to store one movie_id to be sent to DetailsPage
 const SendOneMovie = (state = [], action) => {
   if (action.type === 'SET_ONE_MOVIE') {
     return action.payload;

@@ -21,7 +21,7 @@ function MovieList() {
 
       dispatch({
         type: 'FETCH_ONE_MOVIE',
-        payload: movieID
+        payload: movieID  // this is sending the movie_id to the index file.
       })
 
       // console.log("im clicked");
