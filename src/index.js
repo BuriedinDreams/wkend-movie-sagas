@@ -19,7 +19,7 @@ function* rootSaga() {
     yield takeEvery('SET_NEW_MOVIE', setNewMovie);
 
 }
-
+// this action should be the information in the dispatch payload 
 function* setNewMovie(action){
 
   try {

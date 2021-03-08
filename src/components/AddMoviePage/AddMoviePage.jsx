@@ -10,7 +10,7 @@ function AddMoviePage() {
   const [movieTitle, setMovieTitle] = useState('');
   const [moviePoster, setMoviePoster] = useState('');
   const [movieDescription, setMovieDescription] = useState('');
-  const [movieGenre, setMovieGenre] = useState('');
+  const [movieGenre, setMovieGenre] = useState(1);
  
 
   function cancelBtn() {
@@ -28,6 +28,7 @@ function AddMoviePage() {
        title: movieTitle,
        poster: moviePoster,
        description: movieDescription,
+       genre_id: movieGenre,
       }
     })
 
@@ -59,19 +60,20 @@ function AddMoviePage() {
       onChange={(event) => setMovieDescription(event.target.value)}
     />
       <select name="genre" onChange={(event) => {setMovieGenre(event.target.value) }}>
-        <option value="Adventure">Adventure</option>
-        <option value="Animated">Animated</option>
-        <option value="Biographical">Biographical</option>
-        <option value="Comedy">Comedy</option>
-        <option value="Disaster">Disaster</option>
-        <option value="Drama">Drama</option>
-        <option value="Epic">Epic</option>
-        <option value="Fantasy">Fantasy</option>
-        <option value="Musical">Musical</option>
-        <option value="Romantic">Romantic</option>
-        <option value="Science Fiction">Science Fiction</option>
-        <option value="Space-Opera">Space-Opera</option>
-        <option value="Superhero">Superhero</option>
+        <option value="0"> ~ </option>
+        <option value="1">Adventure</option>
+        <option value="2">Animated</option>
+        <option value="3">Biographical</option>
+        <option value="4">Comedy</option>
+        <option value="4">Disaster</option>
+        <option value="5">Drama</option>
+        <option value="6">Epic</option>
+        <option value="7">Fantasy</option>
+        <option value="8">Musical</option>
+        <option value="9">Romantic</option>
+        <option value="10">Science Fiction</option>
+        <option value="11">Space-Opera</option>
+        <option value="12">Superhero</option>
       </select>
 
     <button onClick={cancelBtn}>Cancel Button</button>
