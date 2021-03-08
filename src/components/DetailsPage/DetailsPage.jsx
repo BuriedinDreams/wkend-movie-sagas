@@ -5,55 +5,48 @@ import { useHistory } from 'react-router-dom';
 
 function DetailsPage() {
   const dispatch = useDispatch();
+  
+  // const history = useHistory(); // this is used get to the next page 
+  // history.push('/details') // this is taking the user to the next page once the button is clicked.
 
   const retrievedDetails = useSelector( store => store.SendOneMovie);
-  console.log('retrievedDetails', retrievedDetails[0].id);
+  console.log('retrievedDetails', retrievedDetails );
 
 
-  // const genres = useSelector(store => store.genres);
-  // console.log('genres' ,genres);
+ 
 
-  // useeffect here
-  // have genres thing.
 
+  const genres = useSelector(store => store.sendOneGenre);
+  console.log('genres' ,genres);
 
   dispatch({ // this dispatch is going to send the movie_id so we can reference it for retrieving the correct genre.
     type: 'FETCH_GENRES',
-    payload: retrievedDetails[0].id // this is the movie.id
+    payload: retrievedDetails.id // this is the movie.id
   })
 
 
 
 
-  const history = useHistory(); // this is used get to the next page 
-
-
-  // history.push('/') 
 
   return (
     <div>
       <h1>Details Page</h1>
 
+      <h2>{retrievedDetails.title}</h2>
+      <img src= {retrievedDetails.poster} />
+      <p>{retrievedDetails.description}</p>
 
-      {retrievedDetails.map((DetailsForMovie) => {
-          return (
-            <div key={DetailsForMovie.id} >
-             <h3> {DetailsForMovie.title} </h3>
-             <img src={DetailsForMovie.poster} />
-             <p> {DetailsForMovie.description} </p>
-            </div>
-            );
-        })}
+      {genres.map( (genre, i) => {
+                    return (
+                        <div key={ i } > 
+            
+                          <p>{genre.name}</p> 
+
+                        </div>
+                    );
+                })}
+    
     </div>
-
-
-
-
-
-
-
-
-
 
   )
 

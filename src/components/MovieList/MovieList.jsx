@@ -4,6 +4,8 @@ import './MovieList.css'
 
 import { useHistory } from 'react-router-dom';
 
+import MovieItem from '../MovieItem/MovieItem'
+
 
 function MovieList() {
 
@@ -20,17 +22,15 @@ function MovieList() {
     }, []);
 
     function handleClick(movieID) {
-      console.log('cool beans', movieID);
+      console.log('inside handleclicked, movieID', movieID);
 
-      dispatch({
-        type: 'FETCH_ONE_MOVIE',
-        payload: movieID  // this is sending the movie_id to the index file.
-      })
-
-
+      // dispatch({
+      //   type: 'FETCH_ONE_MOVIE',
+      //   payload: movieID  // this is sending the movie_id to the index file.
+      // })
 
       // console.log("im clicked");
-      history.push('/details') // this is taking the user to the next page once the button is clicked.
+      
 
     };
 
@@ -44,10 +44,8 @@ function MovieList() {
                 {movies.map(movie => {
                     return (
                         <div key={movie.id} >
-                            <h3>{movie.title}</h3>
-                            <img onClick={ () => { 
-                              handleClick(movie.id) // this is sending the movie.id to the handleClick
-                            } } src={movie.poster} alt={movie.title}/>
+                          {/* the movie id and movie itself are being sent to a movieItem file. */}
+                           <MovieItem  movie={movie} /> 
                         </div>
                     );
                 })}

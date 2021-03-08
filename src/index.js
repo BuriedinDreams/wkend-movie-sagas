@@ -15,14 +15,14 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', fetchOneMovie); // this is listening for it's 'phoneNumber' to be called
-    yield takeEvery('FETCH_GENRES', fetchOneGenre);
+    yield takeEvery('FETCH_ONE_GENRE', fetchOneGenre);
 
 }
 
 
 function* fetchOneMovie(action) {  // We are receiving a payload from MovieListFile.
   try {
-  const movie = yield axios.get(`/api/movie/${action.payload}`); // this action.payload is the id 
+    const movie = yield axios.get(`/api/movie/${action.payload}`); // this action.payload is the id 
         // console.log('get one movie:', action.payload );
         console.log('movies log in saga', movie);
        
@@ -35,14 +35,14 @@ function* fetchOneMovie(action) {  // We are receiving a payload from MovieListF
 }
 
 
-function* fetchOneGenre(action) {  // We are receiving a payload from MovieListFile.
+function* fetchOneGenre(action) {  // We are receiving a payload from MovieItem File.
   try {
   const genres = yield axios.get(`/api/genre/${action.payload}`); // this action.payload is the id 
         // console.log('get one movie:', action.payload );
-        console.log('movies log in saga', genres);
+        console.log('Genres log in saga', genres);
        
        yield put({ type: 'SET_ONE_GENRE', payload: genres.data }); // this is sending the id to the next place.
-      //  yield put({ type: 'SET_ONE_MOVIE', payload: movies.movieID.data }); // this is sending the id to the next place.
+      
 
       } catch {
           console.log('get all error');
@@ -83,6 +83,9 @@ const sendOneGenre = (state = [], action) => {
   if (action.type === 'SET_ONE_GENRE') {
     return action.payload;
   }
+  // else if (action.type === 'CLEAR_GENRES'){
+  //   // return action.payload
+  // }
   return state;
 }; // end sendOneGenre
 
