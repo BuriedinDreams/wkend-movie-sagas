@@ -9,32 +9,15 @@ import MovieItem from '../MovieItem/MovieItem'
 
 function MovieList() {
 
-  const history = useHistory(); // this is used get to the next page
+  // const history = useHistory(); // this is used get to the next page
 
     const dispatch = useDispatch();
 
     const movies = useSelector(store => store.movies);
 
-   
-
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
-
-    function handleClick(movieID) {
-      console.log('inside handleclicked, movieID', movieID);
-
-      // dispatch({
-      //   type: 'FETCH_ONE_MOVIE',
-      //   payload: movieID  // this is sending the movie_id to the index file.
-      // })
-
-      // console.log("im clicked");
-      
-
-    };
-
-   
 
 
     return (

@@ -32,7 +32,7 @@ function AddMoviePage() {
       }
     })
 
-
+    history.push('/')
   }
 
 
