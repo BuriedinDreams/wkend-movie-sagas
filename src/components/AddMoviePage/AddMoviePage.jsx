@@ -21,12 +21,20 @@ function AddMoviePage() {
 
   function saveBtn() {
     console.log("I'm clicked saveBtn");
-    
+
+    dispatch({
+      type: 'SET_NEW_MOVIE',
+      payload: {
+       title: movieTitle,
+       poster: moviePoster,
+       description: movieDescription,
+      }
+    })
+
+
   }
 
 
-
-  // history.push('/')
 
   return(
     

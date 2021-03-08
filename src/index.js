@@ -16,8 +16,25 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_ONE_MOVIE', fetchOneMovie); // this is listening for it's 'phoneNumber' to be called
     yield takeEvery('FETCH_ONE_GENRE', fetchOneGenre);
+    yield takeEvery('SET_NEW_MOVIE', setNewMovie);
 
 }
+
+function* setNewMovie(action){
+
+  try {
+    yield axios.post(`/api/movie/:id`, action.payload); 
+
+    yield put({ 
+      type: 'SET_MOVIES' // this is going to run the movies reducer.
+    });
+
+  } catch {
+      console.log('get all error inside setNewMovie');
+  } 
+
+}
+
 
 
 function* fetchOneMovie(action) {  // We are receiving a payload from MovieListFile.
