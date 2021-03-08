@@ -28,7 +28,7 @@ function AddMoviePage() {
        title: movieTitle,
        poster: moviePoster,
        description: movieDescription,
-       genre_id: movieGenre,
+       genre_id: movieGenre, // this is sending over the the genre_id
       }
     })
 
