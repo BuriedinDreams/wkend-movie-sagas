@@ -23,14 +23,14 @@ function* rootSaga() {
 function* setNewMovie(action){
 
   try {
-    yield axios.post(`/api/movie/:id`, action.payload); 
+    yield axios.post(`/api/movie`, action.payload); 
 
     yield put({ 
       type: 'SET_MOVIES' // this is going to run the movies reducer.
     });
 
   } catch {
-      console.log('get all error inside setNewMovie');
+      console.log('Got an error inside setNewMovie');
   } 
 
 }
