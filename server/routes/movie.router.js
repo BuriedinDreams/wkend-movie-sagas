@@ -2,6 +2,26 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool')
 
+// This is for grabbing one movie 
+router.get('/:id', (req, res) => {
+
+  console.log('req.params.id MOVIE.ROUTE', req.params.id );
+  const query = `SELECT * from "movies" 
+  WHERE id = $1 ;`  
+  const movieID = req.params.id
+
+  pool.query( query, [movieID] )
+  .then( result => {
+    res.send(result.rows); // this is going to give me the all the information for that said movie.id
+  })
+  .catch(err => {
+    console.log('ERROR: Get all movies', err);
+    res.sendStatus(500)
+  })
+
+})
+
+
 router.get('/', (req, res) => {
 
   const query = `SELECT * FROM movies ORDER BY "title" ASC`;
