@@ -21,7 +21,7 @@ function AddMoviePage() {
 
   function saveBtn() {
     console.log("I'm clicked saveBtn");
-
+    
   }
 
 
@@ -67,7 +67,7 @@ function AddMoviePage() {
       </select>
 
     <button onClick={cancelBtn}>Cancel Button</button>
-    <button onClick={saveBtn}>Cancel Button</button>
+    <button onClick={saveBtn}>Save Button</button>
 
 
 
