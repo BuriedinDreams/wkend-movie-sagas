@@ -15,3 +15,15 @@ Copy all of the text in the attached database.sql module and insert + execute it
 You will need multiple Terminal tabs open:
 Run "npm run server" in one to start the server - you should see "Listening on port: 5000" when the server is successfully running.
 Run "npm run client" in a second terminal. You should see "Compiled successfully!" and your browser will automatically open the App.
+
+
+## Example image of website
+
+This image below is an example of the websites Homepage. 
+
+![image](https://user-images.githubusercontent.com/74740443/114289586-c34a2c00-9a3e-11eb-9d1a-c47f70379fb1.png)
+
+
+By clicking on one of the images of a movie poster you will be able to see details about said movie. 
+
+![image](https://user-images.githubusercontent.com/74740443/114289628-2b990d80-9a3f-11eb-9ae7-3404b60b7623.png)
