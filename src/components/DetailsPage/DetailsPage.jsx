@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
 
 
 function DetailsPage() {
@@ -12,10 +13,6 @@ function DetailsPage() {
   const retrievedDetails = useSelector( store => store.SendOneMovie);
   console.log('retrievedDetails', retrievedDetails );
 
-
- 
-
-
   const genres = useSelector(store => store.sendOneGenre);
   console.log('genres' ,genres);
 
@@ -23,9 +20,6 @@ function DetailsPage() {
     type: 'FETCH_GENRES',
     payload: retrievedDetails.id // this is the movie.id
   })
-
-
-
 
 
   return (
@@ -37,14 +31,12 @@ function DetailsPage() {
       <p>{retrievedDetails.description}</p>
 
       {genres.map( (genre, i) => {
-                    return (
-                        <div key={ i } > 
-            
-                          <p>{genre.name}</p> 
-
-                        </div>
-                    );
-                })}
+        return (
+          <div key={ i } > 
+            <p>{genre.name}</p> 
+          </div>
+          );
+        })}
     
     </div>
 
