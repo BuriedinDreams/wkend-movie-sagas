@@ -27,35 +27,35 @@ By clicking on one of the images of a movie poster you will be able to see detai
 
 ## Usage
 
-# This application allows users to scroll through movies on the home page.
+This application allows users to scroll through movies on the home page.
 
-# for details of a movie they are interested in the user can click on the the said movies image and see the details of the said movie.
+for details of a movie they are interested in the user can click on the the said movies image and see the details of the said movie.
 
-# With this application users are also able to add a movie by filling out all the required information text fields and clicking the 'Save button' the movie will be saved to the database.
+With this application users are also able to add a movie by filling out all the required information text fields and clicking the 'Save button' the movie will be saved to the database.
 
 ## Built with:
 
-# CSS
+- CSS
 
-# Material-UI
+- Material-UI
 
-# JavaScript, JSX
+- JavaScript, JSX
 
-# React.js
+- React.js
 
-# Redux (Reducers and Sagas)
+- Redux (Reducers and Sagas)
 
-# Node.js
+- Node.js
 
-# Express.js
+- Express.js
 
-# JSON
+- JSON
 
-# PostgreSQL
+- PostgreSQL
 
-# SQL
+- SQL
 
-# Postico
+- Postico
 
 ## Acknowledgement
 
